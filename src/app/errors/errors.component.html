@@ -1,0 +1,8 @@
+<ng-container *ngIf="control && control.errors && (submit || control.touched)">
+    <span *ngIf="!control.errors['required']  && control.errors['onlyCharacters']">wrong format, Character only</span>
+    <span *ngIf="!control.errors['required']  && control.errors['number']">wrong format, Number only</span>
+    <span *ngIf="!control.errors['required']  && control.errors['month']">wrong format, month only</span>
+    <span *ngIf="!control.errors['required']  && control.errors['year']">wrong format, year only</span>     
+
+</ng-container>
+ 

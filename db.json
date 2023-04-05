@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "fname": "Sampath",
+      "lname": "Kumar",
+      "email": "sam@gmail.com",
+      "phone": "9703037744",
+      "Company": "Cognizant",
+      "Gender": "Male",
+      "DOB": "1989-06-27",
+      "password": "Deepak@123",
+      "CPassword": "Deepak@123",
+      "id": 2
+    },
+    {
+      "fname": "Rahul",
+      "lname": "Dev",
+      "email": "rahul@gmail.com",
+      "phone": "8923193993",
+      "Company": "Infosys",
+      "Gender": "Male",
+      "DOB": "1990-09-07",
+      "password": "Deepak@123",
+      "CPassword": "Deepak@123",
+      "id": 3
+    },
+    {
+      "fname": "Akhil",
+      "lname": "Kumar",
+      "email": "akhil@gmail.com",
+      "phone": "9959479459",
+      "Company": "BuzzBoard",
+      "Gender": "Male",
+      "DOB": "1990-03-14",
+      "password": "Deepak@123",
+      "CPassword": "Deepak@123",
+      "id": 4
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

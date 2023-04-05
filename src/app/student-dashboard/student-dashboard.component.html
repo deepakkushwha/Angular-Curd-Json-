@@ -1,0 +1,144 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">Employee Information</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>      
+        <div class="d-flex">        
+          <button class="btn btn-success" type="submit"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
+        </div>
+      </div>
+  </nav>
+<table class="table table-striped">
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Company</th>
+        <th>gender</th>
+        <th>DOB</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let student of allstudent">
+        <td>{{student.fname}}</td>
+        <td>{{student.lname}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.Company}}</td>
+        <td>{{student.Gender}}</td>
+        <td>{{student.DOB}}</td>
+        <!-- <td>{{student.DOB}}</td> -->
+        <td>
+            <input type="button" value="Edit" (click)="EditStudent(student)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2"/>
+            <input type="button" value="Delete" (click)="DeleteStudent(student)" class="btn btn-danger"/>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+
+
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row g-3" [formGroup]="formValue">
+              <!-- <span *ngIf="formSubmitAttempt" class="error-msg"> All Felids requires</span> -->
+                <div class="col-md-6">
+                    <label for="inputName" class="form-label">First Name</label>
+                    <input type="text" formControlName="fname" class="form-control"
+                    [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                    <div *ngIf="formValue.get('fname').invalid && (formValue.get('fname').dirty || formValue.get('fname').touched)">
+                    <div *ngIf="formValue.get('fname').errors['required']" class="error-msg">Name is required.</div>
+                    <div *ngIf="formValue.get('fname').errors['pattern']" class="error-msg">Name must contain only letters and spaces.</div>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputClass" class="form-label">Last Name</label>
+                    <input type="text" formControlName="lname" class="form-control" id="inputClass" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                    <div *ngIf="formValue.get('lname').invalid && (formValue.get('lname').dirty || formValue.get('lname').touched)">
+                      <div *ngIf="formValue.get('lname').errors['required']" class="error-msg">Last Name is required.</div>
+                      <div *ngIf="formValue.get('lname').errors['pattern']" class="error-msg">Last Name must contain only letters and spaces.</div>
+                    </div>
+                    
+                  </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" formControlName="email" class="form-control" id="inputEmail4" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                  <div *ngIf="formValue.get('email').invalid && (formValue.get('email').dirty || formValue.get('email').touched)">
+                    <div *ngIf="formValue.get('email').errors['required']" class="error-msg">Email is required.</div>
+                    <div *ngIf="formValue.get('email').errors['pattern']" class="error-msg">Email must be a valid email address.</div>
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Phone</label>
+                  <input type="text" formControlName="phone" class="form-control" id="inputEmail4" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                  <div *ngIf="formValue.get('phone').invalid && (formValue.get('phone').dirty || formValue.get('phone').touched)">
+                    <div *ngIf="formValue.get('phone').errors['required']" class="error-msg">Phone number is required.</div>
+                    <div *ngIf="formValue.get('phone').errors['pattern']" class="error-msg">Phone number must be a 10 digit number.</div>
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Company</label>
+                  <input type="text" formControlName="Company" class="form-control" id="inputEmail4" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                  <div *ngIf="formValue.get('Company').invalid && (formValue.get('Company').dirty || formValue.get('Company').touched)">
+                    <div *ngIf="formValue.get('Company').errors['required']" class="error-msg">Company Name is required.</div>
+                    <div *ngIf="formValue.get('Company').errors['pattern']" class="error-msg">Company Name must contain only letters and spaces.</div>
+                  </div>
+                 
+                </div>    
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label Gender">Gender</label>
+                  <input type="radio" class="gvalue" formControlName="Gender" value="Male"> Male
+                  <input type="radio" class="gvalue"  formControlName="Gender" value="Female"> Female
+                  <div *ngIf="formValue.get('Gender').invalid && (formValue.get('Gender').dirty || formValue.get('Gender').touched)">
+                    <div *ngIf="formValue.get('Gender').errors['required']" class="error-msg">Gender is required.</div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="inputCity" class="form-label">DOB</label>
+                  <input type="date" class="form-control" id="inputAddress2" formControlName="DOB" placeholder="Enter your city name" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                  <div *ngIf="formValue.get('DOB').invalid && (formValue.get('DOB').dirty || formValue.get('DOB').touched)">
+                    <div *ngIf="formValue.get('DOB').errors['required']" class="error-msg">DOB is required.</div>
+                  </div>
+                
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label">Password</label>
+                  <input type="password" formControlName="password" class="form-control" id="inputPassword4" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                  <div *ngIf="formValue.get('password').invalid && (formValue.get('password').dirty || formValue.get('password').touched)">
+                    <div *ngIf="formValue.get('password').errors['required']" class="error-msg">Password is required.</div>
+                    <div *ngIf="formValue.get('password').errors['minlength']" class="error-msg">Password must be at least 6 characters long.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputAddress" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" formControlName="CPassword" id="inputAddress" [ngClass]="{'is-invalid':formSubmitAttempt && f['fname'].errors}">
+                </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning"  data-bs-dismiss="modal">Close</button>
+          <button *ngIf="btnSaveShow" type="button" class="btn btn-primary" (click)="AddStudent()" >Register</button>
+          <button *ngIf="btnUpdateShow" type="button" class="btn btn-primary" (click)="UpdateStudent()" >Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

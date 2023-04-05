@@ -1,0 +1,16 @@
+.Gender{
+    margin-top: 40px;
+}
+ .gvalue{
+    margin-left: 10px;
+}
+.form-control.is-invalid {
+    border: 2px solid #ff6655;
+    background-image: none;
+  }
+  .error-msg {
+    color: #ff6655;
+    text-align: left;
+    margin-top: 10px;
+  }
+  
